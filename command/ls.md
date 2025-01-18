@@ -60,21 +60,52 @@ Ushbu buyruq orqali katalog mazmunini turli formatlarda, ranglarda va filtrlar b
        file4.txt
        # ------------------------------------------------------------------------
 
--a     # 列出所有文件，包括以 "." 开头的隐含文件。
--c     # 使用“状态改变时间”代替“文件修改时间”为依据来排序（使用“-t”选项时）或列出（使用“-l”选项时）。
--d     # 将目录名像其它文件一样列出，而不是列出它们的内容。
--i     # 输出文件前先输出文件系列号（即 i 节点号: i-node number）。 -l  列出（以单列格式）文件模式
-       # （file mode），文件的链接数，所有者名，组名，文件大小（以字节为单位），时间信息，及文件名。
-       # 缺省时，时间信息显示最近修改时间；可以以选项“-c”和“-u”选择显示其它两种时间信息。对于设备文件，
-       # 原先显示文件大小的区域通常显示的是主要和次要的信号（majorand minor device numbers）。
--q     # 将文件名中的非打印字符输出为问号。（对于到终端的输出这是缺省的。）
--r     # 逆序排列。
--t     # 按时间信息排序。
--u     # 使用最近访问时间代替最近修改时间为依据来排序（使用“-t”选项时）或列出（使用“-l”选项时）。
--1     # 单列输出。
--1, --format=single-column  # 一行输出一个文件（单列输出）。如标准输出不是到终端，此选项就是缺省选项。
--a, --all # 列出目录中所有文件，包括以“.”开头的文件。
--b, --escape # 把文件名中不可输出的字符用反斜杠加字符编号(就像在 C 语言里一样)的形式列出。
+-a     # Barcha fayllarni, shu jumladan yashirin fayllarni ham ro‘yxatlash uchun ishlatiladi. 
+       # Linux va Unix tizimlarida fayl nomlari "." (nuqta) bilan boshlanadigan fayllar yashirin fayllar  # deb hisoblanadi. Bu fayllar ko‘pincha tizim sozlamalari, konfiguratsiya fayllari yoki 
+       # dasturlar tomonidan ishlatiladi.
+
+-c     #  faylning holat o‘zgargan vaqtini (status change time) asos qilib olib, fayllarni 
+       # tartiblash yoki ro‘yxatlash uchun ishlatiladi. Bu parametr odatda -t (tartiblash) 
+       # yoki -l (detallangan ro‘yxat) parametrlar bilan birgalikda ishlatiladi.
+
+-d     #  kataloglarni fayllar kabi ko‘rsatishni ta’minlaydi. Bu parametr katalogning 
+       # o‘zini ro‘yxatlashni ta’minlaydi, uning ichidagi fayllar yoki boshqa kataloglar 
+       # haqida ma’lumot bermaydi. Ya’ni, ls -d komandasidan foydalanish katalogning faqat nomini 
+       # ko‘rsatadi, lekin uning # tarkibini ko‘rsatmaydi.
+
+-i     # har bir faylning i-node raqamini (yoki fayl seriya raqami) ro‘yxatlashni ta’minlaydi. 
+       # Bu raqam fayl tizimida har bir fayl yoki katalogni ajratish uchun ishlatiladigan 
+       # noyob identifikator bo‘lib, faylning saqlanishi va boshqarilishida muhim rol o‘ynaydi.
+
+-q     # buyrug‘ida fayl nomlaridagi non-printable (ko‘rsatilmaydigan) 
+       # belgilarni "?" belgisiga almashtirish uchun ishlatiladi. Bu, asosan, terminalda ko‘rsatilmaydigan # yoki ekranda noto‘g‘ri ko‘rinadigan belgilar mavjud bo‘lsa, ular o‘rniga "?" belgisini ko‘rsatadi.
+
+-r     # fayllarni teskari tartibda (ya'ni, reverse order) ko‘rsatish uchun ishlatiladi. 
+       # Bu, fayllarni odatiy tartibda emas, balki tartibni teskari qilish orqali chiqaradi.
+
+-t     # buyrug‘ida fayllarni vaqtga ko‘ra tartiblash uchun ishlatiladi. 
+       # Bu, fayllarni ularning oxirgi o‘zgartirilgan sanasi yoki kiritilgan vaqtiga qarab tartiblaydi.
+
+-u     # fayllarni eng so‘nggi kirish (yoki o‘qish) vaqti bo‘yicha tartiblash uchun ishlatiladi. 
+       # Bu opsiya, fayllarni so‘nggi o‘qish yoki kirish vaqti asosida tartiblaydi, 
+       # ya'ni modifikatsiya vaqti o‘rniga kirish vaqtidan foydalanadi.
+
+-1     # fayllarni bir qatorga bir dona qilib chiqarish uchun ishlatiladi. 
+       # Ya'ni, har bir fayl yangi qatorda ko‘rsatiladi. Bu opsiya, odatda, 
+       # fayllarni oddiy va sodda #tarzda ko‘rsatish uchun ishlatiladi.
+
+-a, --all # barcha fayllarni ko‘rsatish uchun ishlatiladi, shu jumladan yashirin 
+       # (nuqta bilan boshlanadigan) fayllarni ham. Linux tizimida fayllar nomi 
+       # nuqtadan (.) boshlansa, #ular yashirin fayllar deb hisoblanadi va odatda ls 
+       # buyrug‘i tomonidan ko‘rsatilmaydi. -a opsiyasi yordamida bu fayllar ham ro‘yxatga olinadi.
+       
+-b, --escape # fayl nomlaridagi ko‘rsatilmaydigan (noto‘g‘ri belgilar) xarakterlarni 
+       # qochirish (escape) shaklida chiqarish uchun ishlatiladi. 
+       # Fayl nomlari ichida noto‘g‘ri yoki maxsus belgilar bo‘lishi mumkin 
+       # (masalan, yangi qator, tabulyatsiya, yoki boshqa boshqaruv belgilar). Bu belgilarni 
+       # to‘g‘ri ko‘rsatish uchun ular C dasturlash tilidagi qochirish (escape) usuliga o‘xshab, 
+       # backslash (\) bilan va mos raqam bilan yoziladi.
+       
 -c, --time=ctime, --time=status
       # 按文件状态改变时间（i节点中的ctime）排序并输出目录内
       # 容。如采用长格式输出（选项“-l”），使用文件的状态改
