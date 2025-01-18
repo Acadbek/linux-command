@@ -107,10 +107,30 @@ Ushbu buyruq orqali katalog mazmunini turli formatlarda, ranglarda va filtrlar b
        # backslash (\) bilan va mos raqam bilan yoziladi.
        
 -c, --time=ctime, --time=status
-      # 按文件状态改变时间（i节点中的ctime）排序并输出目录内
-      # 容。如采用长格式输出（选项“-l”），使用文件的状态改
-      # 变时间取代文件修改时间。【译注：所谓文件状态改变（i节
-      # 点中以ctime标志），既包括文件被修改，又包括文件属性（ 如所有者、组、链接数等等）的变化】
+       # Bu opsiya ls buyrug‘ida faylning holat o‘zgargan vaqti (ya'ni ctime – i-node holat vaqti) 
+       # asosida  fayllarni saralash va ko‘rsatish uchun ishlatiladi.
+       # Asosiy xususiyatlar:
+
+       # ctime – bu faylning holati o‘zgargan vaqti. Faylga oid biror o‘zgarish bo‘lsa 
+       # (masalan, faylning o‘zi o‘zgartirilsa yoki faylning huquqlari, egasi, gruppasi kabi 
+       # atributlar o‘zgarsa), bu vaqt yangilanadi. ctime faylni faqat o‘zgartirishlar 
+       # (modifikatsiyalar) yoki uning atributlarining o‘zgarishi natijasida yangilanadi.
+       # status – bu shunchaki ctime ga o‘xshash ishlaydi va faylning holati o‘zgargan vaqti asosida saralanadi.                       
+
+       # -l opsiyasi bilan birgalikda ishlatilishi:
+       # Agar siz -l opsiyasini qo‘llasangiz, fayl holati o‘zgargan vaqt (ctime) 
+       # chiqarilgan fayl haqidagi # batafsil ma'lumotda ko‘rsatiladi:
+
+       # Output:
+       # -------------------------------------------------------------
+       # -rw-r--r-- 1 user group 1234 Jan 1 12:00 file3.txt
+       # -rw-r--r-- 1 user group 5678 Jan 2 12:00 file1.txt
+       # -rw-r--r-- 1 user group 9101 Jan 3 12:00 file2.txt
+       # --------------------------------------------------------------
+
+       # Bu yerda faylning holat o‘zgargan vaqti (ctime) bilan fayllar saralangan va 
+       # ctime sanasi ko‘rsatilgan.
+
 -d, --directory
       # 将目录名像其它文件一样列出，而不是列出它们的内容。
 -f    # 不排序目录内容；按它们在磁盘上存储的顺序列出。同时启 动“ -a ”选项，如果在“ -f ”之前存在“ -l”、
