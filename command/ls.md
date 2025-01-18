@@ -39,27 +39,26 @@ Ushbu buyruq orqali katalog mazmunini turli formatlarda, ranglarda va filtrlar b
        # kataloglarni rekursiv ravishda ro‘yxatlaydi. Bu katalog va uning 
        # ichidagi barcha darajalardagi tarkibni ko‘rish uchun ishlatiladi.
 
+       # ------------------------------------------------------------------------
        # Boshlang'ich holat
-       ``` shell 
-              /dir1
-                     ├── file1.txt
-                     ├── subdir1
-                     │   ├── file2.txt
-                     │   └── file3.txt
-                     └── subdir2
-                            └── file4.txt
-       ```
+       /dir1
+              ├── file1.txt
+              ├── subdir1
+              │   ├── file2.txt
+              │   └── file3.txt
+              └── subdir2
+                     └── file4.txt
+       # ------------------------------------------------------------------------
        # ls -R dir1 buyrug‘i bilan quyidagicha natija chiqadi:
-       ``` shell 
-              dir1:
-              file1.txt  subdir1  subdir2
+       dir1:
+       file1.txt  subdir1  subdir2
 
-              dir1/subdir1:
-              file2.txt  file3.txt
+       dir1/subdir1:
+       file2.txt  file3.txt
 
-              dir1/subdir2:
-              file4.txt
-       ```
+       dir1/subdir2:
+       file4.txt
+       # ------------------------------------------------------------------------
 
 -a     # 列出所有文件，包括以 "." 开头的隐含文件。
 -c     # 使用“状态改变时间”代替“文件修改时间”为依据来排序（使用“-t”选项时）或列出（使用“-l”选项时）。
