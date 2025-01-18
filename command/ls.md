@@ -1,28 +1,66 @@
 ls
 ===
 
-显示目录内容列表
+Fayl tizimidagi katalog ichidagi fayl va papkalarni ko‘rsatadi
 
-## 补充说明
+## Qo'shimcha ma'lumot:
 
-**ls命令** 就是list的缩写，用来显示目标列表，在Linux中是使用率较高的命令。ls命令的输出信息可以进行彩色加亮显示，以分区不同类型的文件。
+**ls** bu list so'zining qisqartmasi bo'lib, katalog ichidagi fayl va papka ro'yxatini ko'rsatish uchun ishlatiladi. Linux tizimida eng ko'p ishlatiladigan buyruqlardan biridir. ls buyrug'ining chiqish ma'lumotlari rangli ko'rinishda taqdim etilishi mumkin, bu esa turli fayl turlarini ajratib ko'rsatishga yordam beradi.
 
-###  语法
+###  Sintaksis
 
 ```shell
-ls [选项] [文件名...]
+ls [options] [fayl nomlari...]
    [-1abcdfgiklmnopqrstuxABCDFGLNQRSUX] [-w cols] [-T cols] [-I pattern] [--full-time] 
-   [--format={long,verbose,commas,across,vertical,single-col‐umn}] 
+   [--format={long,verbose,commas,across,vertical,single-column}] 
    [--sort={none,time,size,extension}] [--time={atime,access,use,ctime,status}] 
    [--color[={none,auto,always}]] [--help] [--version] [--]
 ```
+Ushbu buyruq orqali katalog mazmunini turli formatlarda, ranglarda va filtrlar bilan ko'rsatish mumkin. Options orqali foydalanuvchi chiqariladigan ma'lumotni o'zi uchun qulay tarzda sozlashi mumkin.
 
-###  选项
+###  Options
 
 ```shell
--C     # 多列输出，纵向排序。
--F     # 每个目录名加 "/" 后缀，每个 FIFO 名加 "|" 后缀， 每个可运行名加“ * ”后缀。
--R     # 递归列出遇到的子目录。
+-C     # fayllar ro‘yxatini ko‘p ustunli formatda ko‘rsatadi va fayllar ustun 
+       # bo‘yicha vertikal tartibda joylashtiriladi.
+
+       # Xususiyatlari:
+       # Fayllar ustun bo‘yicha tartiblanadi, ya’ni bir ustun to‘lgandan 
+              # keyin keyingisiga o‘tadi.
+       # Chiqish maydonidan samarali foydalaniladi va 
+              # ekranga ko‘proq ma’lumot joylashadi.
+       # Standart bo‘yicha terminallar -C rejimida chiqishni ko‘rsatadi, 
+              # agar boshqa parametrlar, masalan, # -l kiritilmagan bo‘lsa.
+
+-F     # fayl yoki katalog turlarini osongina ajratish uchun 
+       # har bir nomga mos suffix (qo‘shimcha belgi) qo‘shadi. Bu, fayl turini tezda aniqlash imkonini beradi.
+
+-R     #  (rekursiv) parametri katalog ichidagi barcha fayllar va ichki 
+       # kataloglarni rekursiv ravishda ro‘yxatlaydi. Bu katalog va uning 
+       # ichidagi barcha darajalardagi tarkibni ko‘rish uchun ishlatiladi.
+
+       # Boshlang'ich holat
+       ``` shell 
+              /dir1
+                     ├── file1.txt
+                     ├── subdir1
+                     │   ├── file2.txt
+                     │   └── file3.txt
+                     └── subdir2
+                            └── file4.txt
+       ```
+       # ls -R dir1 buyrug‘i bilan quyidagicha natija chiqadi:
+       ``` shell 
+              dir1:
+              file1.txt  subdir1  subdir2
+
+              dir1/subdir1:
+              file2.txt  file3.txt
+
+              dir1/subdir2:
+              file4.txt
+       ```
+
 -a     # 列出所有文件，包括以 "." 开头的隐含文件。
 -c     # 使用“状态改变时间”代替“文件修改时间”为依据来排序（使用“-t”选项时）或列出（使用“-l”选项时）。
 -d     # 将目录名像其它文件一样列出，而不是列出它们的内容。
